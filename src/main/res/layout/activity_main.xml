@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" android:background="@android:color/holo_blue_dark">
+        tools:context=".RegisterActivity" android:background="@android:color/holo_blue_dark">
     <EditText
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -68,7 +68,7 @@
     <Button
             android:text="Select Photo"
             android:layout_width="197dp"
-            android:layout_height="176dp"
+            android:layout_height="200dp"
             android:id="@+id/upload_pic_button"
             android:background="@drawable/circle_uploadimage_button"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
