@@ -64,7 +64,7 @@
             app:layout_constraintTop_toBottomOf="@+id/register_button_register"
             app:layout_constraintEnd_toEndOf="@+id/register_button_register"
             app:layout_constraintStart_toStartOf="@+id/register_button_register" android:textAlignment="center"
-            style="@android:style/Widget.Material.AutoCompleteTextView"/>
+            style="@android:style/Widget.Holo.Light.AutoCompleteTextView"/>
     <Button
             android:text="Select Photo"
             android:layout_width="197dp"

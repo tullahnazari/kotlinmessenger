@@ -7,19 +7,20 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.MediaStore.Images.Media.getBitmap
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_register)
 
         //when users click register, this is what they will see
         register_button_register.setOnClickListener {
@@ -57,10 +58,11 @@ class RegisterActivity : AppCompatActivity() {
             //extracting and showing photo on upload pic button
             selectedPhotoUri = data.data
 
-            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
+            val bitmap = getBitmap(contentResolver, selectedPhotoUri)
 
-            val bitmapDrawable = BitmapDrawable(bitmap)
-            upload_pic_button.setBackgroundDrawable(bitmapDrawable)
+            profile_image_register.setImageBitmap(bitmap)
+
+            upload_pic_button.alpha = 0f
         }
     }
 
@@ -82,9 +84,12 @@ class RegisterActivity : AppCompatActivity() {
                 if (!it.isSuccessful) return@addOnCompleteListener
 
                 //else if successful
+                else
                 Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
 
+
                 uploadImageToFirebaseStorage()
+                Toast.makeText(this, "Successfully created user", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 Log.d("Main", "Failed to create user: ${it.message}")

@@ -38,6 +38,8 @@ class LoginActivity: AppCompatActivity() {
                         if (task.isSuccessful) {
                             // Sign in success, update UI with signed-in user's information
                             Log.d("Login", "signInWithEmail:success")
+                            Toast.makeText(this@LoginActivity, "Logged in Successfully",
+                                Toast.LENGTH_SHORT).show()
 
                         } else {
                             // If sign in fails, display a message to the user.
