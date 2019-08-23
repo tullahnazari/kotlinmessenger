@@ -132,7 +132,16 @@ class RegisterActivity : AppCompatActivity() {
         ref.setValue(user)
             .addOnSuccessListener {
             Log.d("RegisterActivity", "We have saved the user to FB DB")
-        }
+
+
+                val intent = Intent(this, LatestMessagesActivity::class.java)
+                //by hitting back button, it will bring you out of activity rather than the previous page(like in registeration)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+
+            }
+
+
 
     }
 }
